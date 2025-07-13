@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Babyboy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* [All your existing styles remain unchanged] */
+    /* Truncated here for brevity. You already have them! */
+
+    /* Just make sure these elements exist: #bgMusic, #playBtn, etc. */
+  </style>
+</head>
+<body>
+  <!-- Balloons -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+
+  <!-- Cake -->
+  <div class="cake" onclick="blowCandles()">
+    <div class="cake-bottom"></div>
+    <div class="cake-top"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="strawberry"></div>
+    <div class="strawberry"></div>
+    <div class="strawberry"></div>
+    <div class="strawberry"></div>
+    <div class="candles" id="candles">
+      <script>
+        document.write(new Array(25).join('<div class="candle"><div class="flame"></div></div>'));
+      </script>
+    </div>
+  </div>
+
+  <!-- Birthday message -->
+  <h1>Happy 24th Birthday, Babyboy (⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)</h1>
+  <div class="message">
+    Happy 24th, babyboy. I know things aren't perfect right now, but
