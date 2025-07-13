@@ -5,10 +5,77 @@
   <title>Happy Birthday Babyboy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* [All your existing styles remain unchanged] */
-    /* Truncated here for brevity. You already have them! */
+    /* (Full CSS from your original version with improvements) */
+    /* For brevity, only the unique additions/changes are noted below */
 
-    /* Just make sure these elements exist: #bgMusic, #playBtn, etc. */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2c2c54, #1a1a2e);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* -- keep all your original CSS below here as it is -- */
+    /* Balloon, cake, candle, flame, rose, strawberry styles, etc. */
+    /* ... truncated for brevity ... */
+
+    .wish {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ffc;
+      display: none;
+      animation: popin 1s ease forwards;
+      z-index: 2;
+    }
+
+    @keyframes popin {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .music-note {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: rgba(255, 182, 193, 0.9);
+      color: #333;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+      z-index: 10;
+    }
+
+    #playBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ff69b4;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    #playBtn:hover {
+      background: #ff85c1;
+      box-shadow: 0 0 18px #ff69b4;
+    }
   </style>
 </head>
 <body>
@@ -39,7 +106,58 @@
     </div>
   </div>
 
-  <!-- Birthday message -->
+  <!-- Message -->
   <h1>Happy 24th Birthday, Babyboy (⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)</h1>
   <div class="message">
-    Happy 24th, babyboy. I know things aren't perfect right now, but
+    Happy 24th, babyboy. I know things aren't perfect right now, but I still wanted to light a little something for you today.<br />
+    You matter to me and I hope this year brings you a little more peace than the last. I love you.
+  </div>
+  <div class="wish" id="wishMessage">Make a wish, babyboy 💫</div>
+
+  <!-- Music instructions -->
+  <div class="music-note">
+    💡 If music doesn't autoplay, tap the play button below 🎵
+  </div>
+
+  <!-- Music -->
+  <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2023/03/13/audio_09a872690d.mp3?filename=gentle-piano-143039.mp3" loop></audio>
+  <audio id="blowSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_69aa05286d.mp3?filename=fire-extinguish-101109.mp3"></audio>
+
+  <!-- Button -->
+  <button id="playBtn">🎵 Play Music</button>
+
+  <script>
+    let blownOut = false;
+    function blowCandles() {
+      const flames = document.querySelectorAll('.flame');
+      const wish = document.getElementById('wishMessage');
+      const blowSound = document.getElementById('blowSound');
+
+      if (!blownOut) {
+        flames.forEach(f => f.style.display = 'none');
+        blowSound.play();
+        wish.style.display = 'block';
+        blownOut = true;
+      } else {
+        flames.forEach(f => f.style.display = 'block');
+        wish.style.display = 'none';
+        blownOut = false;
+      }
+    }
+
+    // Music toggle
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('playBtn');
+
+    btn.onclick = () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = '⏸️ Pause Music';
+      } else {
+        music.pause();
+        btn.textContent = '🎵 Play Music';
+      }
+    };
+  </script>
+</body>
+</html>
